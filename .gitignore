@@ -398,3 +398,6 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/Documentation/template/public
+/Documentation/xmlDoc
+/_site

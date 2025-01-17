@@ -1,0 +1,73 @@
+{
+  "metadata": [
+    {
+      // Projects for which to build xml documentation
+      "src": [
+        {
+          "src": "./",
+          "files": [
+            "**/*.csproj"
+          ],
+          "exclude": [
+            "**/*.Test.csproj",
+            // Explucde UnitTest projects,
+            "**/*.Test.*.csproj"
+          ]
+        }
+      ],
+      "dest": "Documentation/xmlDoc"
+      //Destination folder for XML documentation
+    }
+  ],
+  "build": {
+    // Automatically translate references for types of other projects (allows translation of [TypeFromOtherProject](OtherProject.TypeFromOtherProject) to an URL to the type definition
+    "xref": [
+    ],
+    "content": [
+      {
+        // Files to iunclude for documentation generation
+        "files": [
+          "**/*.md",
+          // All Markdown files
+          "Documentation/**/*.yml",
+          // Yaml files from /Documentation (table of content yaml files)
+          "toc.yml"
+          // the main table of content Yaml file
+        ],
+        "exclude": [
+          "_site/**"
+        ]
+      }
+    ],
+    // use internal instance for plantUml diagram generation
+    "markdownEngineProperties": {
+      "plantUml": {
+        "outputFormat": "svg",
+        "renderingMode": "remote"
+      }
+    },
+    // include additional files (these will be copied to the _site folder
+    "resource": [
+      {
+        "files": [
+          "**/images/**"
+          // Copy all files from /images/ folders
+        ]
+      }
+    ],
+    "output": "_site",
+    // output folder for the generated static documentation website 
+    "template": [
+      "default",
+      "modern",
+      "Documentation/template"
+    ],
+    "globalMetadata": {
+      "_appName": "Test Documentation",
+      "_appTitle": "Test Documentation",
+      "_appFooter": "Copyright © |  <a href=\"https://dotnet.github.io/docfx/\" target=\"_blank\">DocFX</a> ",
+      "_enableSearch": true,
+      "pdf": false
+    }
+  }
+}
