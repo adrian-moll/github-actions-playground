@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Content Include="..\docfx.json" Link="docfx.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\index.md" Link="index.md" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Docfx.App" Version="2.78.2" />
+		<!-- the versions of Microsoft.CodeAnalysis.* must match exactly what Docfx.App was built against, not the latest stable version -->
+		<PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="4.12.0" />
+		<PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.12.0" />
+	</ItemGroup>
+
+</Project>
