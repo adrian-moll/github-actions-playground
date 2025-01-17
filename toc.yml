@@ -1,0 +1,4 @@
+- name: Docs
+  href: Documentation/docs/
+- name: XML Doc
+  href: Documentation/xmlDoc/
