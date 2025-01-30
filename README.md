@@ -4,4 +4,4 @@ Repository for testing GitHubs following features:
 - GitHub Actions
 - Deploy DocFX documentation to github pages : [Documentation](https://adrian-moll.github.io/github-actions-playground/)
 - Gpg signing of commits
-- SSH signing of commits
+- SSH signing of commits 2
