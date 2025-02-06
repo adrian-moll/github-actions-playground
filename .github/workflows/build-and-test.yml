@@ -19,7 +19,7 @@ jobs:
       run: dotnet build --no-restore
 
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test --no-build --verbosity diag
 
   build-and-test-ubuntu:
     runs-on: ubuntu-latest
