@@ -6,7 +6,7 @@ on:
       - main  # Trigger on pull requests to main branch
 
 jobs:
-  build-and-test-windows:
+  build-windows:
     runs-on: windows-latest
 
     steps:
@@ -21,17 +21,26 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity diag
 
-  build-and-test-ubuntu:
+    - name: Upload Build (Debug)
+        uses: actions/upload-artifact@v4
+        with:
+          name: carrotmq-rabbitmq-build-windows
+          path: |
+            TestApp/bin
+            TestApp.Test/bin
+            
+  test-ubuntu:
+    needs: build-windows
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
 
-    - name: Restore dependencies
-      run: dotnet restore
-
-    - name: Build
-      run: dotnet build --no-restore
+    - name: Download Build (Debug)
+        uses: actions/download-artifact@v4
+        with:
+          name: carrotmq-rabbitmq-build-windows
+          
 
     - name: Test
       run: dotnet test --no-build --verbosity normal
