@@ -18,17 +18,14 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
 
-    - name: Test
-      run: dotnet test --no-build --verbosity diag
-
     - name: Upload Build (Debug)
-        uses: actions/upload-artifact@v4
-        with:
-          name: carrotmq-rabbitmq-build-windows
-          path: |
-            TestApp/bin
-            TestApp.Test/bin
-            
+      uses: actions/upload-artifact@v4
+      with:
+        name: carrotmq-rabbitmq-build-windows
+        path: |
+          TestApp/bin
+          TestApp.Test/bin
+
   test-ubuntu:
     needs: build-windows
     runs-on: ubuntu-latest
@@ -37,10 +34,9 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: Download Build (Debug)
-        uses: actions/download-artifact@v4
-        with:
-          name: carrotmq-rabbitmq-build-windows
-          
+      uses: actions/download-artifact@v4
+      with:
+        name: carrotmq-rabbitmq-build-windows
 
     - name: Test
       run: dotnet test --no-build --verbosity normal
